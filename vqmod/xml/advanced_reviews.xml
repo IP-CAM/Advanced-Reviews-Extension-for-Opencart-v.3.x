@@ -234,8 +234,7 @@ endif;
     <!-- General END -->
 
     <!-- Default Theme -->
-
-    <file path='catalog/view/theme/default/template/product/product.twig'>
+    <file path='catalog/view/theme/*/template/product/product.twig'>
         <operation info="Adds the advanced_reviews to the product page">
             <search position="replace" offset="43"><![CDATA[<div class="tab-pane" id="tab-review">]]></search>
             <add><![CDATA[
@@ -298,6 +297,8 @@ endif;
         </operation>
     </file>
     <!-- Default Theme END -->
+
+    
 
 
 </modification>
