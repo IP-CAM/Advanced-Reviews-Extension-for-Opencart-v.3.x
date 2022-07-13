@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
-    <id>advanced_bewertungen</id>
+    <id>advanced_reviews</id>
     <version>1.0</version>
     <vqmver>2.X</vqmver>
-    <author>Karley Deutschland GmbH - Marvin Klein</author>
+    <author>Marvin Klein</author>
     <file path='admin/controller/catalog/review.php'>
-        <operation info='Setzt die Variabel für die Bearbeitung von verifiziert im Admin'>
+        <operation info='Advanced Reviews within admin panel'>
             <search position='before'><![CDATA[if (isset($this->request->post['text'])) {]]></search>
             <add><![CDATA[
             /* advanced_reviews.xml */
@@ -58,7 +58,7 @@
     </file>
 
     <file path='admin/view/template/catalog/review_form.twig'>
-        <operation info="Add the dropdown menu to select verified state">
+        <operation info="Add fields from advanced reviews">
             <search position="before" offset="1"><![CDATA[<label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>]]></search>
             <add><![CDATA[
             <!-- advanced_reviews.xml -->
