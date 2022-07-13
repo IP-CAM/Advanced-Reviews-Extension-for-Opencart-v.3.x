@@ -155,10 +155,21 @@ endif;
 if($this->config->get('module_advanced_reviews_status')):
     $this->load->language('extension/module/advanced_reviews_form');
 
+    // E-mail address
     if (empty($this->request->post['email']) || utf8_strlen($this->request->post['email']) < 5 || utf8_strlen($this->request->post['email']) > 96) {
         $json['error'] = $this->language->get('error_email');
     }
-    
+
+    // Terms
+    $terms_id = $this->config->get('module_advanced_reviews_terms');
+    if ($terms_id) {
+        $this->load->model('catalog/information');
+        $information_info = $this->model_catalog_information->getInformation($terms_id);
+        
+        if ($information_info && !isset($this->request->post['agree'])) {
+            $json['error'] = sprintf($this->language->get('error_agree'), $information_info['title']);
+		}
+    }
 endif;
 /* advanced_reviews END */
             ]]></add>
