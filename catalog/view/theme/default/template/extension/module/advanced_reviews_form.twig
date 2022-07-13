@@ -1,0 +1,62 @@
+<div class="tab-pane" id="tab-review">
+  <form class="form-horizontal" id="form-review">
+    <div id="review"></div>
+    <h2>{{ text_write }}</h2>
+    {% if review_guest %}
+    <div class="form-group required">
+      <div class="col-sm-12">
+        <label class="control-label" for="input-name">{{ entry_name }}</label>
+        <input type="text" name="name" value="{{ customer_name }}" id="input-name" class="form-control" />
+      </div>
+    </div>
+    <div class="form-group required">
+      <div class="col-sm-12">
+        <label class="control-label" for="input-review">{{ entry_review }}</label>
+        <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+        <div class="help-block">{{ text_note }}</div>
+      </div>
+    </div>
+    {% if advanced_reviews_require_email %}
+    <div class="form-group required">
+      <div class="col-sm-12">
+        <label class="control-label" for="input-email">{{ entry_email }}</label>
+        <input type="email" name="email" value="{{ customer_email }}" id="input-email" class="form-control" />
+      </div>
+    </div>
+    {% endif %}
+    <div class="form-group required">
+      <div class="col-sm-12 rating-container">
+        <label class="control-label rating-label">{{ entry_rating }}</label>
+        <span class="star-cb-group">
+          <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
+          <input type="radio" id="rating-4" name="rating" value="4" checked="checked" /><label for="rating-4">4</label>
+          <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
+          <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
+          <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
+          <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+        </span>
+      </div>
+    </div>
+    {{ captcha }}
+
+    {% if text_agree %}
+      <div class="buttons clearfix">
+        <div class="pull-right">
+          <input type="checkbox" name="agree" value="1" />
+          <label>{{ text_agree }}</label>
+          <button type="button" id="button-review" data-loading-text="{{ text_loading }}" class="btn btn-primary">{{ button_continue }}</button>
+        </div>
+      </div>
+    {% else %}
+      <div class="buttons clearfix">
+        <div class="pull-right">
+          <button type="button" id="button-review" data-loading-text="{{ text_loading }}" class="btn btn-primary">{{ button_continue }}</button>
+        </div>
+      </div>
+    {% endif %} 
+
+    {% else %}
+    {{ text_login }}
+    {% endif %}
+  </form>
+</div>
