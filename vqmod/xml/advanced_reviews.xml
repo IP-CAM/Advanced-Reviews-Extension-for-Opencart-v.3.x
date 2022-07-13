@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <id>advanced_bewertungen</id>
+    <version>1.0</version>
+    <vqmver>2.X</vqmver>
+    <author>Karley Deutschland GmbH - Marvin Klein</author>
+    <file path='admin/controller/catalog/review.php'>
+        <operation info='Setzt die Variabel für die Bearbeitung von verifiziert im Admin'>
+            <search position='before'><![CDATA[if (isset($this->request->post['text'])) {]]></search>
+            <add><![CDATA[
+            /* advanced_reviews.xml */
+
+            $data['advanced_reviews_status'] = $this->config->get('module_advanced_reviews_status');
+            $data['advanced_reviews_require_email'] = $this->config->get('module_advanced_reviews_require_email');
+
+            if($data['advanced_reviews_status']):
+
+                $this->load->language('extension/module/advanced_reviews_form');
+                $this->load->model('extension/module/advanced_reviews');
+
+                $advanced_review_info = $this->model_extension_module_advanced_reviews->getAdvancedReview($this->request->get['review_id']);
+
+                if (isset($this->request->post['verified'])) {
+                    $data['verified'] = $this->request->post['verified'];
+                } elseif (!empty($advanced_review_info)) {
+                    $data['verified'] = $advanced_review_info['verified'];
+                } else {
+                    $data['verified'] = '';
+                }
+
+
+                if (isset($this->request->post['email'])) {
+                    $data['email'] = $this->request->post['email'];
+                } elseif (!empty($advanced_review_info)) {
+                    $data['email'] = $advanced_review_info['email'];
+                } else {
+                    $data['email'] = '';
+                }
+
+                if (isset($this->request->post['image'])) {
+                    $data['image'] = $this->request->post['image'];
+                } elseif (!empty($advanced_review_info)) {
+                    $data['image'] = $advanced_review_info['image'];
+                } else {
+                    $data['image'] = '';
+                }
+
+
+                if (isset($this->error['email'])) {
+                    $data['error_email'] = $this->error['email'];
+                } else {
+                    $data['error_email'] = '';
+                }
+            endif;
+            /* advanced_reviews.xml END */
+            ]]></add>
+        </operation>
+    </file>
+
+    <file path='admin/view/template/catalog/review_form.twig'>
+        <operation info="Add the dropdown menu to select verified state">
+            <search position="before" offset="1"><![CDATA[<label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>]]></search>
+            <add><![CDATA[
+            <!-- advanced_reviews.xml -->
+            {% if advanced_reviews_status %}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-verified">{{ entry_verified }}</label>
+                    <div class="col-sm-10">
+                    <select name="verified" id="input-verified" class="form-control">                
+                        {% if verified %}                
+                        <option value="1" selected="selected">{{ text_yes }}</option>
+                        <option value="0">{{ text_no }}</option>                
+                        {% else %}                
+                        <option value="1">{{ text_yes }}</option>
+                        <option value="0" selected="selected">{{ text_no }}</option>                
+                        {% endif %}
+                    </select>
+                    </div>
+                </div>
+
+                {% if advanced_reviews_require_email %}
+                    <div class="form-group">
+                {% else %}
+                    <div class="form-group" style="display: none;">
+                {% endif %}
+                        <label class="col-sm-2 control-label" for="input-email">{{ entry_email }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
+                            {% if error_email %}
+                                <div class="text-danger">{{ error_email }}</div>
+                            {% endif %} 
+                        </div>
+                    </div>
+
+            {% endif %}
+            <!-- advanced_reviews.xml END -->
+            ]]></add>
+        </operation>
+    </file>
+
+    <file path='admin/model/catalog/review.php'>
+        <operation info="Insert">
+            <search position="after"><![CDATA[$review_id = $this->db->getLastId();]]></search>
+            <add><![CDATA[
+            if($this->config->get('module_advanced_reviews_status')):
+                $this->load->model('extension/module/advanced_reviews');
+                $advanced_review_info = $this->model_extension_module_advanced_reviews->createOrUpdateAdvancedReview($review_id, $data);
+            endif;
+            ]]></add>
+        </operation>
+
+        <operation info="Update">
+            <search position="after" offset="1"><![CDATA[public function editReview($review_id, $data) {]]></search>
+            <add><![CDATA[
+            if($this->config->get('module_advanced_reviews_status')):
+                $this->load->model('extension/module/advanced_reviews');
+                $advanced_review_info = $this->model_extension_module_advanced_reviews->createOrUpdateAdvancedReview($review_id, $data);
+            endif;
+            ]]></add>
+        </operation>
+
+        <operation info="Delete">
+            <search position="after" offset="1"><![CDATA[public function deleteReview($review_id) {]]></search>
+            <add><![CDATA[
+                $this->load->model('extension/module/advanced_reviews');
+                $advanced_review_info = $this->model_extension_module_advanced_reviews->deleteAdvancedReview($review_id);
+            ]]></add>
+        </operation>
+    </file>
+</modification>
