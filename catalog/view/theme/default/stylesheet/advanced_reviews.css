@@ -74,6 +74,7 @@
 
 .testimonial-container {
   position: relative;
+  word-wrap: break-word;
 }
 
 .review-date {
