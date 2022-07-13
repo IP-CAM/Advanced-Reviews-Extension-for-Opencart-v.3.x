@@ -1,4 +1,4 @@
 <?php
 
-$_['text_verified']     = 'Verifizierter Kauf';
-$_['text_not_verified'] = 'Nicht verifizierter Kauf';
+$_['text_verified']     = 'Verified purchase';
+$_['text_not_verified'] = 'Not verified purchase';
