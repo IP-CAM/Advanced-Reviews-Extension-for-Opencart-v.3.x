@@ -5,7 +5,7 @@ class ModelExtensionModuleAdvancedReviews extends Model {
             `review_id` int(11) NOT NULL,
             `verified` tinyint(4) NOT NULL DEFAULT 0,
             `image` varchar(255),
-            `email` varchar(96)
+            `email` varchar(96),
             PRIMARY KEY(`review_id`)
         );";
 
