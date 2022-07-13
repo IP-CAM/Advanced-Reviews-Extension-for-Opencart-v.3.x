@@ -183,6 +183,9 @@ endif;
             <add><![CDATA[
 /* advanced_reviews */   
 if($this->config->get('module_advanced_reviews_status')):
+    $this->load->language('extension/module/advanced_reviews');
+    $this->document->addStyle('catalog/view/theme/default/stylesheet/advanced_reviews.css');
+    $data['advanced_reviews_cut_names'] = (int)$this->config->get('module_advanced_reviews_cut_names');
     $this->response->setOutput($this->load->view('extension/module/advanced_reviews', $data));
 else:
     $this->response->setOutput($this->load->view('product/review', $data));
@@ -237,7 +240,9 @@ endif;
             <search position="replace" offset="43"><![CDATA[<div class="tab-pane" id="tab-review">]]></search>
             <add><![CDATA[
             {% if advanced_reviews_status %}
-                {{ advanced_reviews }}
+                <div class="tab-pane" id="tab-review">
+                    {{ advanced_reviews }}
+                </div>
             {% else %}
                 <div class="tab-pane" id="tab-review">
                     <form class="form-horizontal" id="form-review">
@@ -285,6 +290,11 @@ endif;
                     </div>
             {% endif %}
             ]]></add>
+        </operation>
+
+        <operation info="Reset review form on valid submit">
+            <search position="after"><![CDATA[$('input[name=\'rating\']:checked').prop('checked', false);]]></search>
+            <add><![CDATA[$('#form-review').trigger("reset");]]></add>
         </operation>
     </file>
     <!-- Default Theme END -->

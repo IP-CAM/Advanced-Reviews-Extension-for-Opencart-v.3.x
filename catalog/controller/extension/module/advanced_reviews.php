@@ -4,7 +4,7 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 		$data = [];
 		
 		$this->document->addStyle('catalog/view/theme/default/stylesheet/advanced_reviews.css');
-		
+
 		$this->load->language('extension/module/advanced_reviews_form');
 
 		$data['review_status'] = $this->config->get('config_review_status');
@@ -23,8 +23,10 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 
 
 		$data['advanced_reviews_require_email'] = $this->config->get('module_advanced_reviews_require_email');
-		$data['advanced_reviews_cut_names'] = $this->config->get('module_advanced_reviews_cut_names');
-		$data['advanced_reviews_terms'] = $this->config->get('module_advanced_reviews_terms');
+		$data['advanced_reviews_cut_names'] = (int)$this->config->get('module_advanced_reviews_cut_names');
+		$data['advanced_reviews_terms'] = (int)$this->config->get('module_advanced_reviews_terms');
+
+		
 
 		if ($data['advanced_reviews_terms']) {
 			$this->load->model('catalog/information');

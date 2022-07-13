@@ -1,38 +1,61 @@
 {% if reviews %}
-  {% for review in reviews %}
-    <div class="card border-radius-0 bg-color-light border-0 box-shadow-1">
-      <div class="card-body py-3 px-2">
-        <div class="testimonial testimonial-style-4 border-0 box-shadow-none m-0 p-0">
-          <div class="px-4 mx-2 pt-2 pb-3" style="background-color: #fff;">
-            <h4 class="font-weight-semi-bold">
-              {{ review.author }} - {{ review.date_added }}
-            </h4>
-            {% if review.verified %}
-              <span class="label label-success">Verifizierter Kauf</span>
-            {% else %}
-              <span class="label label-default">Nicht verifizierter Kauf</span>
-            {% endif %}
-            <p>
-              {{ review.text }}
-            </p>
-            <div class="rating">
-              {% for i in 1..5 %}
-                {% if review.rating < i %}
-                  <span class="icon-ratings">
-                    <i class="icon-rating icon-rating-o"></i>
-                  </span>
+  <div class="review-container">
+    {% for review in reviews %}
+      <div class="card">
+        <div class="card-body">
+          <div class="testimonial testimonial-style-4">
+            <div class="testimonial-container">
+              <h4 class="font-weight-semi-bold">
+                
+                {% set authArr = review.author|split(' ') %}
+                {% set author = '' %}
+
+                {% if authArr|length > 1 and advanced_reviews_cut_names == 1 %}
+                  {% for a in authArr %}
+                    {% if not loop.last %}
+                      {% set author = author ~ a ~ ' ' %}
+                    {% else %}
+                      {% set author = author ~ a|first|upper ~ '.' %}
+                    {% endif %}
+                    
+                  {% endfor %}
                 {% else %}
-                  <span class="icon-ratings">
-                    <i class="icon-rating icon-rating-x"></i>
-                  </span>
+                  {% set author = review.author %}
                 {% endif %}
-              {% endfor %}
-            </p>
+
+                {{ author }}
+              </h4>
+              <div class="review-date">
+                {{ review.date_added }}
+              </div>
+
+              {% if review.verified %}
+                <span class="label label-success">{{ text_verified }}</span>
+              {% else %}
+                <span class="label label-default">{{ text_not_verified }}</span>
+              {% endif %}
+              <p>
+                {{ review.text }}
+              </p>
+              <div class="rating">
+                {% for i in 1..5 %}
+                  {% if review.rating < i %}
+                    <span class="icon-ratings">
+                      <i class="fa fa-star-o"></i>
+                    </span>
+                  {% else %}
+                    <span class="icon-ratings">
+                      <i class="fa fa-star"></i>
+                    </span>
+                  {% endif %}
+                {% endfor %}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
   <div class="text-right">
     {{ pagination }}
   </div>

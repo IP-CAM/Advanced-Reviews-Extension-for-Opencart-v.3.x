@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* Form */
 .rating-container {
     display: flex;
     flex-wrap: wrap;
@@ -63,3 +64,39 @@
   color: #e52;
   text-shadow: 0 0 1px #333;
 }
+
+/* Form END */
+
+/* Reviews */
+.review-container {
+  margin-bottom: 1em; 
+}
+
+.testimonial-container {
+  position: relative;
+}
+
+.review-date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: bold;
+  font-size: .75em;
+}
+
+.testimonial.testimonial-style-4 {
+  padding: 8px;
+  border-bottom: 1px solid #DFDFDF;
+  border-left: 1px solid #ECECEC;
+  border-right: 1px solid #ECECEC;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.review-container .card:first-child {
+  border-top: 1px solid #DFDFDF;
+}
+
+.font-weight-semibold, .font-weight-semi-bold {
+  font-weight: 600 !important;
+}
+/* Reviews END */
