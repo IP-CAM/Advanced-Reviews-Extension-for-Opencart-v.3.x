@@ -131,9 +131,10 @@
 
     <!-- Admin END -->
 
-    <!-- Default Theme -->
+    <!-- General -->
+
     <file path='catalog/controller/product/product.php'>
-        <operation info="">
+        <operation info="Load advanced reviews">
             <search position="before"><![CDATA[$data['share'] = $this->url->link('product/product', 'product_id=' . (int)$this->request->get['product_id']);]]></search>
             <add><![CDATA[
 /* advanced_reviews.xml */
@@ -174,7 +175,62 @@ endif;
 /* advanced_reviews END */
             ]]></add>
         </operation>
+
+        
+
+        <operation info="Replace review output with advanced reviews output">
+            <search position="replace"><![CDATA[$this->response->setOutput($this->load->view('product/review', $data));]]></search>
+            <add><![CDATA[
+/* advanced_reviews */   
+if($this->config->get('module_advanced_reviews_status')):
+    $this->response->setOutput($this->load->view('extension/module/advanced_reviews', $data));
+else:
+    $this->response->setOutput($this->load->view('product/review', $data));
+endif;
+
+/* advanced_reviews END */   
+            ]]></add>
+        </operation>
+
+        <operation info="Add verified to data array">
+            <search position="before"><![CDATA['rating'     => (int)$result['rating'],]]></search>
+            <add><![CDATA['verified'     => (int)$result['verified'],]]></add>
+        </operation>
     </file>
+
+    <file path='catalog/model/catalog/review.php'>
+        <operation info="Save advanced_review data">
+            <search position="after"><![CDATA[$review_id = $this->db->getLastId();]]></search>
+            <add><![CDATA[
+/* advanced_reviews.xml */
+if($this->config->get('module_advanced_reviews_status')):
+        
+        if(!isset($data['image'])):
+            $data['image'] = "";
+        endif;
+
+        $this->db->query("INSERT INTO " . DB_PREFIX . "advanced_reviews SET `review_id` = '" . (int)$review_id . "', `verified` = 0, `image` = '" . $this->db->escape($data['image']) . "', `email` = '" . $this->db->escape($data['email']) . "'");
+endif;
+/* advanced_reviews.xml END */
+            ]]></add>
+        </operation>
+
+        <operation info="Add verified to SQL query">
+            <search position="replace"><![CDATA[$query = $this->db->query("SELECT r.review_id, r.author, r.rating, r.text, p.product_id, pd.name, p.price, p.image, r.date_added FROM " . DB_PREFIX . "review r LEFT JOIN " . DB_PREFIX . "product p ON (r.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND p.date_available <= NOW() AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY r.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);]]></search>
+            <add><![CDATA[
+if($this->config->get('module_advanced_reviews_status')):
+    $query = $this->db->query("SELECT r.review_id, r.author, r.rating, r.text, p.product_id, pd.name, p.price, p.image, r.date_added, ar.verified, ar.image FROM " . DB_PREFIX . "review r LEFT JOIN " . DB_PREFIX . "product p ON (r.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "advanced_reviews ar ON (ar.review_id = r.review_id) WHERE p.product_id = '" . (int)$product_id . "' AND p.date_available <= NOW() AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY r.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);            
+else:
+    $query = $this->db->query("SELECT r.review_id, r.author, r.rating, r.text, p.product_id, pd.name, p.price, p.image, r.date_added FROM " . DB_PREFIX . "review r LEFT JOIN " . DB_PREFIX . "product p ON (r.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND p.date_available <= NOW() AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY r.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);            
+endif;
+]]></add>
+        </operation>
+    </file>
+
+
+    <!-- General END -->
+
+    <!-- Default Theme -->
 
     <file path='catalog/view/theme/default/template/product/product.twig'>
         <operation info="Adds the advanced_reviews to the product page">
