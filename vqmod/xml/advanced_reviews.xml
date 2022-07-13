@@ -136,7 +136,7 @@
         <operation info="">
             <search position="before"><![CDATA[$data['share'] = $this->url->link('product/product', 'product_id=' . (int)$this->request->get['product_id']);]]></search>
             <add><![CDATA[
-/* k_advanced_reviews.xml */
+/* advanced_reviews.xml */
 $data['advanced_reviews_status'] = $this->config->get('module_advanced_reviews_status');
 
 if($data['advanced_reviews_status']):
@@ -144,13 +144,29 @@ if($data['advanced_reviews_status']):
 endif;
 
 
-/* k_advanced_reviews.xml END */
+/* advanced_reviews.xml END */
 ]]></add>
+        </operation>
+
+        <operation info="Validate advanced review fields on save">
+            <search position="before"><![CDATA[if (!isset($json['error'])) {]]></search>
+            <add><![CDATA[
+/* advanced_reviews.xml */
+if($this->config->get('module_advanced_reviews_status')):
+    $this->load->language('extension/module/advanced_reviews_form');
+
+    if (empty($this->request->post['email']) || utf8_strlen($this->request->post['email']) < 5 || utf8_strlen($this->request->post['email']) > 96) {
+        $json['error'] = $this->language->get('error_email');
+    }
+    
+endif;
+/* advanced_reviews END */
+            ]]></add>
         </operation>
     </file>
 
     <file path='catalog/view/theme/default/template/product/product.twig'>
-        <operation info="">
+        <operation info="Adds the advanced_reviews to the product page">
             <search position="replace" offset="43"><![CDATA[<div class="tab-pane" id="tab-review">]]></search>
             <add><![CDATA[
             {% if advanced_reviews_status %}
