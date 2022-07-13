@@ -56,6 +56,12 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$data['module_advanced_reviews_terms'] = $this->config->get('module_advanced_reviews_terms');
 		}
 
+		if (isset($this->request->post['module_advanced_reviews_verified_faq'])) {
+			$data['module_advanced_reviews_verified_faq'] = $this->request->post['module_advanced_reviews_verified_faq'];
+		} else {
+			$data['module_advanced_reviews_verified_faq'] = $this->config->get('module_advanced_reviews_verified_faq');
+		}
+
 		if (isset($this->request->post['module_advanced_reviews_cut_names'])) {
 			$data['module_advanced_reviews_cut_names'] = $this->request->post['module_advanced_reviews_cut_names'];
 		} else {
