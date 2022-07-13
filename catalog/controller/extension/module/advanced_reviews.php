@@ -23,13 +23,13 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 
 
 		$data['advanced_reviews_require_email'] = $this->config->get('module_advanced_reviews_require_email');
-		$data['advanced_reviews_cut_names'] = (int)$this->config->get('module_advanced_reviews_cut_names');
-		$data['advanced_reviews_terms'] = (int)$this->config->get('module_advanced_reviews_terms');
-
+		$data['advanced_reviews_cut_names'] 	= $this->config->get('module_advanced_reviews_cut_names');
+		$data['advanced_reviews_terms'] 		= $this->config->get('module_advanced_reviews_terms');
+		$data['advanced_reviews_verified_faq'] 	= $this->config->get('module_advanced_reviews_verified_faq');
 		
+		$this->load->model('catalog/information');
 
 		if ($data['advanced_reviews_terms']) {
-			$this->load->model('catalog/information');
 
 			$information_info = $this->model_catalog_information->getInformation($data['advanced_reviews_terms']);
 
@@ -40,6 +40,18 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			}
 		} else {
 			$data['text_agree'] = '';
+		}
+
+		if($data['advanced_reviews_verified_faq']) {
+			$information_info = $this->model_catalog_information->getInformation($data['advanced_reviews_terms']);
+
+			if ($information_info) {
+				$data['text_verified_faq'] = sprintf($this->language->get('text_verified_faq'), $this->url->link('information/information/agree', 'information_id=' . $data['advanced_reviews_verified_faq'], true), $information_info['title']);
+			} else {
+				$data['text_verified_faq'] = '';
+			}
+		} else {
+			$data['text_verified_faq'] = '';
 		}
 		
 		return $this->load->view('extension/module/advanced_reviews_form', $data);

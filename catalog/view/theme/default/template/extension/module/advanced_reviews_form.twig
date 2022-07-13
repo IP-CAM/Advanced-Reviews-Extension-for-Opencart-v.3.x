@@ -1,6 +1,10 @@
 <div class="tab-pane" id="tab-review">
   <form class="form-horizontal" id="form-review">
     <div id="review"></div>
+    {% if text_verified_faq %}
+      {{ text_verified_faq }}
+    {% endif %}
+    
     <h2>{{ text_write }}</h2>
     {% if review_guest %}
     <div class="form-group required">
