@@ -9,12 +9,14 @@ $_['text_edit']				= 'Bearbeiten';
 // Entry
 $_['entry_status']			= 'Status';
 $_['entry_terms']			= 'Bedingungen Bewertungen';
+$_['entry_verified_faq']	= 'Bewertungsinformationen';
 $_['entry_cut_names']       = 'Namen abschneiden';
 $_['entry_require_email']   = 'E-Mail benötigt';
 
 
 // Help
 $_['help_terms']		    = 'Muss vom Kunden beim abgeben einer Bewertung zugestimmt werden';
+$_['help_verified_faq']		= 'Zeigt den ausgewählten Text auf der Bewertungsseite an. Dieseser Text soll dem Kunden darüber informieren, wie Bewertungen gesammelt und verifiziert werden (Pflicht für Shops in Europa)';
 $_['help_cut_names']		= 'Kundennamen die in der Produktseite ausgegeben werden, sind im zweiten Wort nach dem ersten Buchstaben abgeschnitten';
 $_['help_require_email']    = 'Wenn aktiviert, muss der Kunde zum Bewerten seine E-Mail Adresse angeben';
 
