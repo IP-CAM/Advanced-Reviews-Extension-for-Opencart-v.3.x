@@ -235,7 +235,7 @@ endif;
 
     <!-- Default Theme -->
     <file path='catalog/view/theme/*/template/product/product.twig'>
-        <operation info="Adds the advanced_reviews to the product page">
+        <operation info="Adds the advanced_reviews to the product page" error="log">
             <search position="replace" offset="43"><![CDATA[<div class="tab-pane" id="tab-review">]]></search>
             <add><![CDATA[
             {% if advanced_reviews_status %}
@@ -291,7 +291,7 @@ endif;
             ]]></add>
         </operation>
 
-        <operation info="Reset review form on valid submit">
+        <operation info="Reset review form on valid submit" error="log">
             <search position="after"><![CDATA[$('input[name=\'rating\']:checked').prop('checked', false);]]></search>
             <add><![CDATA[$('#form-review').trigger("reset");]]></add>
         </operation>
