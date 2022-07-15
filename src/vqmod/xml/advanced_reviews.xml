@@ -212,6 +212,10 @@ if($this->config->get('module_advanced_reviews_status')):
             $data['image'] = "";
         endif;
 
+        if(!isset($data['email'])):
+            $data['email'] = "";
+        endif;
+
         $this->db->query("INSERT INTO " . DB_PREFIX . "advanced_reviews SET `review_id` = '" . (int)$review_id . "', `verified` = 0, `image` = '" . $this->db->escape($data['image']) . "', `email` = '" . $this->db->escape($data['email']) . "'");
 endif;
 /* advanced_reviews.xml END */
