@@ -23,6 +23,3 @@ Next navigate to Extensions->Extensions and press on install for Advanced Review
 ## Roadmap
 1. Implementing image upload for product reviews
 2. Add OCMOD varient
-3. Add support for theme tt_amino1
-4. Add support for theme sellegance
-
