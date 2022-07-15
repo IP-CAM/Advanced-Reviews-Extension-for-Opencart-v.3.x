@@ -54,6 +54,13 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$data['text_verified_faq'] = '';
 		}
 		
+		// Captcha
+		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
+			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'));
+		} else {
+			$data['captcha'] = '';
+		}
+
 		return $this->load->view('extension/module/advanced_reviews_form', $data);
 	}
 }
