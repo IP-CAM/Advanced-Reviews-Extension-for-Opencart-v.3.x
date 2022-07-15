@@ -157,7 +157,7 @@ if($this->config->get('module_advanced_reviews_status')):
     $this->load->language('extension/module/advanced_reviews_form');
 
     // E-mail address
-    if (empty($this->request->post['email']) || utf8_strlen($this->request->post['email']) < 5 || utf8_strlen($this->request->post['email']) > 96) {
+    if ($this->config->get('module_advanced_reviews_require_email') && empty($this->request->post['email']) || utf8_strlen($this->request->post['email']) < 5 || utf8_strlen($this->request->post['email']) > 96) {
         $json['error'] = $this->language->get('error_email');
     }
 
