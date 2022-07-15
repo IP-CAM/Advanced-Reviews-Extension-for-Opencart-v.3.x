@@ -197,7 +197,7 @@ endif;
 
         <operation info="Add verified to data array">
             <search position="before"><![CDATA['rating'     => (int)$result['rating'],]]></search>
-            <add><![CDATA['verified'     => (int)$result['verified'],]]></add>
+            <add><![CDATA['verified'     => isset($result['verified']) ? $result['verified'] : false,]]></add>
         </operation>
     </file>
 
