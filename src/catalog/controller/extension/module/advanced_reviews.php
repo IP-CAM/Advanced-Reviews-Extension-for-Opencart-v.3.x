@@ -43,7 +43,7 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 		}
 
 		if($data['advanced_reviews_verified_faq']) {
-			$information_info = $this->model_catalog_information->getInformation($data['advanced_reviews_terms']);
+			$information_info = $this->model_catalog_information->getInformation($data['advanced_reviews_verified_faq']);
 
 			if ($information_info) {
 				$data['text_verified_faq'] = sprintf($this->language->get('text_verified_faq'), $this->url->link('information/information/agree', 'information_id=' . $data['advanced_reviews_verified_faq'], true), $information_info['title']);
