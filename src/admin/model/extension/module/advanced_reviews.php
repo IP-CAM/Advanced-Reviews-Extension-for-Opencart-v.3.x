@@ -10,6 +10,8 @@ class ModelExtensionModuleAdvancedReviews extends Model {
             PRIMARY KEY(`review_id`)
         );";
 
+        $this->db->query($sql); 
+
         $sql = "CREATE TABLE IF NOT EXISTS `" . DB_PREFIX .  "advanced_reviews_mailtext` (
             `language_id` int(11) NOT NULL,
             `mailtext` TEXT NOT NULL,
