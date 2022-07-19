@@ -27,6 +27,10 @@ $_['help_enable_coupons']       = 'Wenn aktiviert, dann erhält der Kunde bei Fr
 $_['help_coupons_type']         = 'Prozent oder Fixbetrag. Wird jeweils auf den Bruttobetrag gerechnet';
 $_['help_coupons_mailtext']     = 'Text der nach der Generierung des Coupons an den Kunden gesendet werden soll.';
 
+// Tabs
+$_['tab_general']   = 'Allgemein';
+$_['tab_coupons']   = 'Gutscheine';
+
 // Error
 $_['error_permission']		= 'Keine Rechte zum bearbeiten';
 $_['error_coupons_disount']	= 'Sie müssen einen Nachlass angeben, wenn Sie Gutscheine verwenden möchten.';

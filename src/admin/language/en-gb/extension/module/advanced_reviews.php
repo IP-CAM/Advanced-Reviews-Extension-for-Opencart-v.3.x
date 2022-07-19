@@ -27,6 +27,10 @@ $_['help_enable_coupons']       = 'If activated, then the customer will automati
 $_['help_coupons_type']         = 'Percent or fixed amount. Calculated in each case on the gross amount';
 $_['help_coupons_mailtext']     = 'Text to be sent to the customer after generating the voucher.';
 
+// Tabs
+$_['tab_general']   = 'General';
+$_['tab_coupons']   = 'Vouchers';
+
 // Error
 $_['error_permission']		= 'No permissions to edit';
 $_['error_coupons_disount'] = 'You must specify a discount if you want to use vouchers.';
