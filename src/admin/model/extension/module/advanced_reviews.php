@@ -11,10 +11,9 @@ class ModelExtensionModuleAdvancedReviews extends Model {
         );";
 
         $sql = "CREATE TABLE IF NOT EXISTS `" . DB_PREFIX .  "advanced_reviews_mailtext` (
-            `review_id` int(11) NOT NULL,
             `language_id` int(11) NOT NULL,
             `mailtext` TEXT NOT NULL,
-            PRIMARY KEY(`review_id`, `language_id`)
+            PRIMARY KEY(`language_id`)
         );";
 
         $this->db->query($sql);        
@@ -46,5 +45,26 @@ class ModelExtensionModuleAdvancedReviews extends Model {
 
     public function deleteAdvancedReview($review_id) {
         $this->db->query("DELETE FROM " . DB_PREFIX . "advanced_reviews WHERE `review_id` = '" . (int)$review_id . "'");
+    }
+
+
+    public function saveMailtexts($mailtexts) {
+        foreach ($mailtexts as $key => $mailtext) {
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "advanced_reviews_mailtext` SET `language_id` = '" . (int)$key . "', `mailtext` = '" . $this->db->escape($mailtext["mailtext"]) . "' ON DUPLICATE KEY UPDATE `mailtext` = '" . $this->db->escape($mailtext["mailtext"]) . "'");
+        }
+    }
+
+    public function getMailtexts() {
+        $mailtexts = array();
+
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "advanced_reviews_mailtext");
+
+		foreach ($query->rows as $result) {
+			$mailtexts[$result['language_id']] = array(
+				'mailtext'      => $result['mailtext']
+			);
+		}
+
+		return $mailtexts;
     }
 };

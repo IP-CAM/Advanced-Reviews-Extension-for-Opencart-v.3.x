@@ -8,9 +8,18 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('setting/setting');
+		$this->load->model('extension/module/advanced_reviews');
+
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+
+			// Save mailtext so it does not get posted into the setting table
+			$mailtexts = $this->request->post['module_advanced_reviews_coupons_mailtext'];
+			unset($this->request->post['module_advanced_reviews_coupons_mailtext']);
 			$this->model_setting_setting->editSetting('module_advanced_reviews', $this->request->post);
+
+			// Save mailtexts to custom table
+			$this->model_extension_module_advanced_reviews->saveMailtexts($mailtexts);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -86,8 +95,6 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$data['module_advanced_reviews_coupons_type'] = $this->config->get('module_advanced_reviews_coupons_type');
 		}
 
-		
-
 		if (isset($this->request->post['module_advanced_reviews_coupons_discount'])) {
 			$data['module_advanced_reviews_coupons_discount'] = $this->request->post['module_advanced_reviews_coupons_discount'];
 		} else {
@@ -99,11 +106,12 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 		endif;
 		
 		
-		if (isset($this->request->post['module_advanced_reviews_coupons_mailtext'])) {
-			$data['module_advanced_reviews_coupons_mailtext'] = $this->request->post['module_advanced_reviews_coupons_mailtext'];
-		}  else {
-			$data['module_advanced_reviews_coupons_mailtext'] = array();
-		}
+		
+
+		// Load Mailtext
+		$mailtexts = $this->model_extension_module_advanced_reviews->getMailtexts();
+
+		$data['module_advanced_reviews_coupons_mailtext'] = $mailtexts;
 		
 		
 		$this->load->model('catalog/information');
