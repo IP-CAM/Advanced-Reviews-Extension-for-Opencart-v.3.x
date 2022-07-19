@@ -142,15 +142,24 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		if($this->request->post['module_advanced_reviews_enable_coupons'] && !$this->request->post['module_advanced_reviews_require_email']) {
-			$this->error['warning'] = $this->language->get('error_coupons_email_required');
+		if($this->request->post['module_advanced_reviews_enable_coupons']) {
+			if(!$this->request->post['module_advanced_reviews_require_email']) {
+				$this->error['warning'] = $this->language->get('error_coupons_email_required');
+			}
+
+			if($this->request->post['module_advanced_reviews_coupons_discount'] <= 0) {
+				$this->error['warning'] = $this->language->get('error_coupons_discount');	
+			}
+
+			foreach ($this->request->post['module_advanced_reviews_coupons_mailtext'] as $key => $value) {
+				
+				if(empty($value['mailtext']) || htmlspecialchars_decode($value['mailtext']) == '<p><br></p>') {
+					$this->error['warning'] = $this->language->get('error_coupons_mailtext');	
+				}
+			}
 		}
 
-		if($this->request->post['module_advanced_reviews_enable_coupons'] && $this->request->post['module_advanced_reviews_coupons_discount'] <= 0) {
-			$this->error['warning'] = $this->language->get('error_coupons_discount');
-		}
 
-		// TODO: Validate languages
 
 		return !$this->error;
 	}
