@@ -132,12 +132,12 @@
               <label class="col-sm-2 control-label" for="input-coupons-type"><span data-toggle="tooltip" title="{{ help_coupons_type }}">{{ entry_coupons_type }}</span></label>
               <div class="col-sm-10">
                 <select name="module_advanced_reviews_coupons_type" id="input-coupons-type" class="form-control">
-                  {% if module_advanced_reviews_coupons_type == 'P' %}
-                  <option value="P" selected="selected">{{ text_percent }}</option>
-                  <option value="F">{{ text_fix }}</option>
-                  {% else %}
+                  {% if module_advanced_reviews_coupons_type == 'F' %}
                   <option value="P">{{ text_percent }}</option>
                   <option value="F" selected="selected">{{ text_fix }}</option>
+                  {% else %}
+                  <option value="P" selected="selected">{{ text_percent }}</option>
+                  <option value="F">{{ text_fix }}</option>
                   {% endif %}
                 </select>
               </div>
