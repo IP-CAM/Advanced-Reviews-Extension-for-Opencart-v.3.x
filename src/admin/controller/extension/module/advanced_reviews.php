@@ -123,6 +123,16 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
+		if($this->request->post['module_advanced_reviews_enable_coupons'] && !$this->request->post['module_advanced_reviews_require_email']) {
+			$this->error['warning'] = $this->language->get('error_email_required');
+		}
+
+		if($this->request->post['module_advanced_reviews_enable_coupons'] && $this->request->post['module_advanced_reviews_coupons_discount'] <= 0) {
+			$this->error['warning'] = $this->language->get('error_coupons_discount');
+		}
+
+
+
 		return !$this->error;
 	}
 }
