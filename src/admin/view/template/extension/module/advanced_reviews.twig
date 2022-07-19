@@ -150,14 +150,44 @@
               </div>
             </div>
 
+            <ul class="nav nav-tabs" id="language">
+                {% for language in languages %}
+                  <li><a href="#language{{ language.language_id }}" data-toggle="tab"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}"/> {{ language.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="tab-content">
+              {% for language in languages %}
+                  <div class="tab-pane" id="language{{ language.language_id }}">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-mailtext{{ language.language_id }}">{{ entry_coupons_mailtext }}</label>
+                      <div class="col-sm-10">
+                        <textarea name="module_advanced_reviews_coupons_mailtext[{{ language.language_id }}][mailtext]" id="input-mailtext{{ language.language_id }}" data-toggle="summernote" data-lang="{{ summernote }}" class="form-control">{{ module_advanced_reviews_coupons_mailtext[language.language_id] ? module_advanced_reviews_coupons_mailtext[language.language_id].mailtext }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+                </div>
+            </div>
+
           </div>
-
         </div>
-
-
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<link href="view/javascript/codemirror/lib/codemirror.css" rel="stylesheet"/>
+<link href="view/javascript/codemirror/theme/monokai.css" rel="stylesheet"/>
+<script type="text/javascript" src="view/javascript/codemirror/lib/codemirror.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/lib/xml.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/lib/formatting.js"></script>
+<script type="text/javascript" src="view/javascript/summernote/summernote.min.js"></script>
+<link href="view/javascript/summernote/summernote.min.css" rel="stylesheet"/>
+<script type="text/javascript" src="view/javascript/summernote/summernote-image-attributes.js"></script>
+<script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
+
+<script type="text/javascript">
+  $('#language a:first').tab('show');
+</script>
 {{ footer }}

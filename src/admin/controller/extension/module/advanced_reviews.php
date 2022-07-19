@@ -98,13 +98,19 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$data['module_advanced_reviews_coupons_discount'] = 0;
 		endif;
 		
-
+		
+		if (isset($this->request->post['module_advanced_reviews_coupons_mailtext'])) {
+			$data['module_advanced_reviews_coupons_mailtext'] = $this->request->post['module_advanced_reviews_coupons_mailtext'];
+		}  else {
+			$data['module_advanced_reviews_coupons_mailtext'] = array();
+		}
 		
 		
-
 		$this->load->model('catalog/information');
-
 		$data['informations'] = $this->model_catalog_information->getInformations();
+		
+		$this->load->model('localisation/language');
+		$data['languages'] = $this->model_localisation_language->getLanguages();
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
