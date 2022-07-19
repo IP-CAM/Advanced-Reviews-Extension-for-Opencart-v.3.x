@@ -150,7 +150,7 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$this->error['warning'] = $this->language->get('error_coupons_discount');
 		}
 
-
+		// TODO: Validate languages
 
 		return !$this->error;
 	}

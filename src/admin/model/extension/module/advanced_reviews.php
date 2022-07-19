@@ -81,4 +81,8 @@ class ModelExtensionModuleAdvancedReviews extends Model {
 
 		return $mailtexts;
     }
+
+    public function setCouponSent($review_id) {
+        $this->db->query("INSERT INTO " . DB_PREFIX . "advanced_reviews SET `review_id` = '" . (int)$review_id . "', `verified` = 0, `image` = '', `email` = '' ON DUPLICATE KEY UPDATE `coupon_sent` = '1'");
+    }
 };
