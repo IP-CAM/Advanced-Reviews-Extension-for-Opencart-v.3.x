@@ -34,5 +34,6 @@ $_['tab_general']   = 'General';
 $_['tab_coupons']   = 'Coupons';
 
 // Error
-$_['error_permission']		    = 'No permissions to edit';
-$_['error_coupons_discount']    = 'You must specify a discount if you want to use coupons.';
+$_['error_permission']		            = 'No permissions to edit';
+$_['error_coupons_discount']            = 'You must specify a discount if you want to use coupons.';
+$_['error_coupons_email_required']      = '"E-Mail required" must be enabled if you want to use coupons.';
