@@ -14,6 +14,7 @@ class ModelExtensionModuleAdvancedReviews extends Model {
 
         $sql = "CREATE TABLE IF NOT EXISTS `" . DB_PREFIX .  "advanced_reviews_mailtext` (
             `language_id` int(11) NOT NULL,
+            `subject` TEXT NOT NULL,
             `mailtext` TEXT NOT NULL,
             PRIMARY KEY(`language_id`)
         );";
@@ -52,7 +53,7 @@ class ModelExtensionModuleAdvancedReviews extends Model {
 
     public function saveMailtexts($mailtexts) {
         foreach ($mailtexts as $key => $mailtext) {
-            $this->db->query("INSERT INTO `" . DB_PREFIX . "advanced_reviews_mailtext` SET `language_id` = '" . (int)$key . "', `mailtext` = '" . $this->db->escape($mailtext["mailtext"]) . "' ON DUPLICATE KEY UPDATE `mailtext` = '" . $this->db->escape($mailtext["mailtext"]) . "'");
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "advanced_reviews_mailtext` SET `language_id` = '" . (int)$key . "', `mailtext` = '" . $this->db->escape($mailtext["mailtext"]) . "', `subject` = '" . $this->db->escape($mailtext["subject"]) . "' ON DUPLICATE KEY UPDATE `mailtext` = '" . $this->db->escape($mailtext["mailtext"]) . "', `subject` = '" . $this->db->escape($mailtext["subject"]) . "'");
         }
     }
 
@@ -63,7 +64,8 @@ class ModelExtensionModuleAdvancedReviews extends Model {
 
 		foreach ($query->rows as $result) {
 			$mailtexts[$result['language_id']] = array(
-				'mailtext'      => $result['mailtext']
+				'mailtext'      => $result['mailtext'],
+                'subject'       => $result['subject']
 			);
 		}
 
@@ -77,7 +79,8 @@ class ModelExtensionModuleAdvancedReviews extends Model {
 
 		foreach ($query->rows as $result) {
 			$mailtexts[$result['language_id']] = array(
-				'mailtext'      => $result['mailtext']
+				'mailtext'      => $result['mailtext'],
+                'subject'       => $result['subject']
 			);
 		}
 
@@ -86,5 +89,10 @@ class ModelExtensionModuleAdvancedReviews extends Model {
 
     public function setCouponSent($review_id) {
         $this->db->query("INSERT INTO " . DB_PREFIX . "advanced_reviews SET `review_id` = '" . (int)$review_id . "', `verified` = 0, `image` = '', `email` = '' ON DUPLICATE KEY UPDATE `coupon_sent` = '1'");
+    }
+
+    public function totalCouponsReceived($email) {
+        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "advanced_reviews` WHERE `email` = '" . $this->db->escape($email) . "' AND `coupon_sent` = 1");
+		return $query->row['total'];
     }
 };

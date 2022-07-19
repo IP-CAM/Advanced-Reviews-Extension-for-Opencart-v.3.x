@@ -14,8 +14,8 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 
 			// Save mailtext so it does not get posted into the setting table
-			$mailtexts = $this->request->post['module_advanced_reviews_coupons_mailtext'];
-			unset($this->request->post['module_advanced_reviews_coupons_mailtext']);
+			$mailtexts = $this->request->post['module_advanced_reviews_coupons_mail'];
+			unset($this->request->post['module_advanced_reviews_coupons_mail']);
 			$this->model_setting_setting->editSetting('module_advanced_reviews', $this->request->post);
 
 			// Save mailtexts to custom table
@@ -96,12 +96,12 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 		}
 
 		
-		if (isset($this->request->post['module_advanced_reviews_coupons_mailtext'])) {
-			$data['module_advanced_reviews_coupons_mailtext'] = $this->request->post['module_advanced_reviews_coupons_mailtext'];
+		if (isset($this->request->post['module_advanced_reviews_coupons_mail'])) {
+			$data['module_advanced_reviews_coupons_mail'] = $this->request->post['module_advanced_reviews_coupons_mail'];
 		} else {
 			// Load Mailtext
 			$mailtexts = $this->model_extension_module_advanced_reviews->getMailtexts();
-			$data['module_advanced_reviews_coupons_mailtext'] = $mailtexts;
+			$data['module_advanced_reviews_coupons_mail'] = $mailtexts;
 		}
 		
 		
@@ -152,10 +152,14 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 				}
 			}
 
-			foreach ($this->request->post['module_advanced_reviews_coupons_mailtext'] as $key => $value) {
+			foreach ($this->request->post['module_advanced_reviews_coupons_mail'] as $key => $value) {
 				
 				if(empty($value['mailtext']) || htmlspecialchars_decode($value['mailtext']) == '<p><br></p>') {
-					$this->error['warning'] = $this->language->get('error_coupons_mailtext');	
+					$this->error['warning'] = $this->language->get('error_coupons_mail_text');	
+				}
+
+				if(empty($value['subject'])) {
+					$this->error['warning'] = $this->language->get('error_coupons_mail_subject');	
 				}
 			}
 		}
