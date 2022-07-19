@@ -98,6 +98,7 @@ if($this->config->get('module_advanced_reviews_enable_coupons') && !empty($advan
         } else if($mailtext) {
 
             $text = $mailtext['mailtext'];
+            $text = str_replace("{{ CODE }}", $this->config->get('module_advanced_reviews_coupons_coupon'), $text);
             $mail->setTo($advanced_review_info['email']);
             $mail->setSubject($mailtext['subject']);
             $mail->setHtml(htmlspecialchars_decode($text));

@@ -2,9 +2,11 @@
 $_['heading_title']			= 'Advanced Reviews';
 
 // Text
-$_['text_extension']		= 'Extensions';
-$_['text_success']			= 'Record successfully edited';
-$_['text_edit']				= 'Edit';
+$_['text_extension']		             = 'Extensions';
+$_['text_success']			             = 'Record successfully edited';
+$_['text_edit']				             = 'Edit';
+$_['text_coupons_mail_placeholders']	 = '<kbd>{{ CODE }}</kbd> will be replaced with the coupon code';
+
 
 // Entry
 $_['entry_status']			        = 'Status';
