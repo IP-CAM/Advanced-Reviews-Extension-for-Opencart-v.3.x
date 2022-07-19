@@ -7,14 +7,15 @@ $_['text_success']			= 'Record successfully edited';
 $_['text_edit']				= 'Edit';
 
 // Entry
-$_['entry_status']			    = 'Status';
-$_['entry_terms']			    = 'Conditions reviews';
-$_['entry_verified_faq']	    = 'Verifying information';
-$_['entry_cut_names']           = 'Cut off names';
-$_['entry_require_email']       = 'E-mail required';
-$_['entry_enable_coupons']      = 'Activate coupons';
-$_['entry_coupons_mail_text']   = 'Mailtext';
-$_['entry_coupons_coupon']      = 'Coupon code';
+$_['entry_status']			        = 'Status';
+$_['entry_terms']			        = 'Conditions reviews';
+$_['entry_verified_faq']	        = 'Verifying information';
+$_['entry_cut_names']               = 'Cut off names';
+$_['entry_require_email']           = 'E-mail required';
+$_['entry_enable_coupons']          = 'Activate coupons';
+$_['entry_coupons_mail_subject']    = 'Subject';
+$_['entry_coupons_mail_text']       = 'Mailtext';
+$_['entry_coupons_coupon']          = 'Coupon code';
 
 
 // Help

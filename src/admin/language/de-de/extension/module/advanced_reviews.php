@@ -7,14 +7,15 @@ $_['text_success']			= 'Datensatz erfolgreich bearbeitet';
 $_['text_edit']				= 'Bearbeiten';
 
 // Entry
-$_['entry_status']			    = 'Status';
-$_['entry_terms']			    = 'Bedingungen Bewertungen';
-$_['entry_verified_faq']	    = 'Bewertungsinformationen';
-$_['entry_cut_names']           = 'Namen abschneiden';
-$_['entry_require_email']       = 'E-Mail benötigt';
-$_['entry_enable_coupons']      = 'Gutscheine aktivieren';
-$_['entry_coupons_mail_text']   = 'Mailtext';
-$_['entry_coupons_coupon']      = 'Gutscheincode';
+$_['entry_status']			        = 'Status';
+$_['entry_terms']			        = 'Bedingungen Bewertungen';
+$_['entry_verified_faq']	        = 'Bewertungsinformationen';
+$_['entry_cut_names']               = 'Namen abschneiden';
+$_['entry_require_email']           = 'E-Mail benötigt';
+$_['entry_enable_coupons']          = 'Gutscheine aktivieren';
+$_['entry_coupons_mail_subject']    = 'Betreff';
+$_['entry_coupons_mail_text']       = 'Mailtext';
+$_['entry_coupons_coupon']          = 'Gutscheincode';
 
 
 // Help
