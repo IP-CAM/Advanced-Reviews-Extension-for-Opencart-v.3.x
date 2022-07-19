@@ -37,3 +37,4 @@ $_['tab_coupons']   = 'Gutscheine';
 $_['error_permission']		            = 'Keine Rechte zum bearbeiten';
 $_['error_coupons_disount']	            = 'Sie müssen einen Nachlass angeben, wenn Sie Gutscheine verwenden möchten.';
 $_['error_coupons_email_required']      = '"E-Mail benötigt" muss aktiviert sein, wenn Sie Gutscheine verwenden möchten.';
+$_['error_coupons_mailtext']            = 'Bitte geben Sie für jede verfügbare Sprache einen Mailtext an.';
