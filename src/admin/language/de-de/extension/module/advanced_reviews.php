@@ -27,7 +27,7 @@ $_['help_cut_names']		    = 'Kundennamen die in der Produktseite ausgegeben werd
 $_['help_require_email']        = 'Wenn aktiviert, muss der Kunde zum Bewerten seine E-Mail Adresse angeben';
 $_['help_enable_coupons']       = 'Wenn aktiviert, dann erhält der Kunde bei Freischaltung der Bewertung automatisch eine E-Mail mit einem Rabattcode für seine nächste Bestellung.';
 $_['help_coupons_type']         = 'Prozent oder Fixbetrag. Wird jeweils auf den Bruttobetrag gerechnet';
-$_['help_coupons_mailtext']     = 'Text der nach der Generierung des Coupons an den Kunden gesendet werden soll.';
+$_['help_coupons_mailtext']     = 'Text der nach der Generierung des Coupons an den Kunden gesendet werden soll.  Die Erweiterung wählt immer die Standardsprache aus dem Admin-Panel für die E-Mail aus.';
 
 // Tabs
 $_['tab_general']   = 'Allgemein';

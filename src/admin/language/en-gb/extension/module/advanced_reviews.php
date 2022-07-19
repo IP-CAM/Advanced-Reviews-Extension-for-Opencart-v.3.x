@@ -27,7 +27,7 @@ $_['help_cut_names']		    = 'Customer names that are displayed in the product pa
 $_['help_require_email']        = 'If enabled, the customer must provide their email address to rate';
 $_['help_enable_coupons']       = 'If activated, then the customer will automatically receive an email with a discount code for his next order when the review is approved.';
 $_['help_coupons_type']         = 'Percent or fixed amount. Calculated in each case on the gross amount';
-$_['help_coupons_mailtext']     = 'Text to be sent to the customer after generating the coupons.';
+$_['help_coupons_mailtext']     = 'Text to be sent to the customer after generating the coupons. The extension always selects the default language from admin panel for the email.';
 
 // Tabs
 $_['tab_general']   = 'General';
