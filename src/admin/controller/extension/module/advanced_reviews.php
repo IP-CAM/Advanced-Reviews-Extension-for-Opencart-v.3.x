@@ -124,6 +124,11 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 		$this->model_extension_module_advanced_reviews->install();
 	}
 
+	public function uninstall() {
+		$this->load->model("extension/module/advanced_reviews");
+		$this->model_extension_module_advanced_reviews->uninstall();
+	}
+
 	protected function validate() {
 		if (!$this->user->hasPermission('modify', 'extension/module/advanced_reviews')) {
 			$this->error['warning'] = $this->language->get('error_permission');

@@ -10,11 +10,21 @@ class ModelExtensionModuleAdvancedReviews extends Model {
             PRIMARY KEY(`review_id`)
         );";
 
+        $sql = "CREATE TABLE IF NOT EXISTS `" . DB_PREFIX .  "advanced_reviews_mailtext` (
+            `review_id` int(11) NOT NULL,
+            `language_id` int(11) NOT NULL,
+            `mailtext` TEXT NOT NULL,
+            PRIMARY KEY(`review_id`, `language_id`)
+        );";
+
         $this->db->query($sql);        
     }
 
     public function uninstall(){
         $sql = "DROP TABLE IF EXISTS `" . DB_PREFIX . "advanced_reviews`";
+        $this->db->query($sql);
+
+        $sql = "DROP TABLE IF EXISTS `" . DB_PREFIX . "advanced_reviews_mailtext`";
         $this->db->query($sql);
     }
 
