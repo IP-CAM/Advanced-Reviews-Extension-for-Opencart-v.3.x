@@ -95,10 +95,14 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$data['module_advanced_reviews_coupons_coupon'] = $this->config->get('module_advanced_reviews_coupons_coupon');
 		}
 
-		// Load Mailtext
-		$mailtexts = $this->model_extension_module_advanced_reviews->getMailtexts();
-
-		$data['module_advanced_reviews_coupons_mailtext'] = $mailtexts;
+		
+		if (isset($this->request->post['module_advanced_reviews_coupons_mailtext'])) {
+			$data['module_advanced_reviews_coupons_mailtext'] = $this->request->post['module_advanced_reviews_coupons_mailtext'];
+		} else {
+			// Load Mailtext
+			$mailtexts = $this->model_extension_module_advanced_reviews->getMailtexts();
+			$data['module_advanced_reviews_coupons_mailtext'] = $mailtexts;
+		}
 		
 		
 		$this->load->model('catalog/information');
