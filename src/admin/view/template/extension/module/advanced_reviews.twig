@@ -128,6 +128,14 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-coupons-coupon"><span data-toggle="tooltip" title="{{ help_coupons_coupon }}">{{ entry_coupons_coupon }}</span></label>
+              <div class="col-sm-10">
+                <input name="module_advanced_reviews_coupons_coupon" id="input-coupons-coupon" value="{{ module_advanced_reviews_coupons_coupon }}" class="form-control" />
+              </div>
+            </div>
+
+
             <ul class="nav nav-tabs" id="language">
                 {% for language in languages %}
                   <li><a href="#language{{ language.language_id }}" data-toggle="tab"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}"/> {{ language.name }}</a></li>

@@ -14,6 +14,7 @@ $_['entry_cut_names']           = 'Namen abschneiden';
 $_['entry_require_email']       = 'E-Mail benötigt';
 $_['entry_enable_coupons']      = 'Gutscheine aktivieren';
 $_['entry_coupons_mailtext']    = 'Mailtext';
+$_['entry_coupons_coupon']      = 'Gutscheincode';
 
 
 // Help
@@ -23,6 +24,7 @@ $_['help_cut_names']		    = 'Kundennamen die in der Produktseite ausgegeben werd
 $_['help_require_email']        = 'Wenn aktiviert, muss der Kunde zum Bewerten seine E-Mail Adresse angeben';
 $_['help_enable_coupons']       = 'Wenn aktiviert, dann erhält der Kunde bei Freischaltung der Bewertung automatisch eine E-Mail mit einem Rabattcode für seine nächste Bestellung.';
 $_['help_coupons_mailtext']     = 'Text der nach der Generierung des Coupons an den Kunden gesendet werden soll.  Die Erweiterung wählt immer die Standardsprache aus dem Admin-Panel für die E-Mail aus.';
+$_['help_coupons_coupon']       = 'Gutscheincode der an den Kunden per E-Mail gesendet wird, sobald die Bewertung veröffentlicht wurde.';
 
 // Tabs
 $_['tab_general']   = 'Allgemein';
@@ -31,4 +33,6 @@ $_['tab_coupons']   = 'Gutscheine';
 // Error
 $_['error_permission']		            = 'Keine Rechte zum bearbeiten';
 $_['error_coupons_email_required']      = '"E-Mail benötigt" muss aktiviert sein, wenn Sie Gutscheine verwenden möchten.';
+$_['error_coupons_no_coupon']           = 'Bitte geben Sie einen gültigen Gutscheincode an.';
+$_['error_coupons_coupon_invalid']      = 'Der angegebene Gutscheincode existiert nicht.';
 $_['error_coupons_mailtext']            = 'Bitte geben Sie für jede verfügbare Sprache einen Mailtext an.';

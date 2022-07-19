@@ -14,6 +14,7 @@ $_['entry_cut_names']           = 'Cut off names';
 $_['entry_require_email']       = 'E-mail required';
 $_['entry_enable_coupons']      = 'Activate coupons';
 $_['entry_coupons_mailtext']    = 'Mailtext';
+$_['entry_coupons_coupon']      = 'Coupon code';
 
 
 // Help
@@ -23,6 +24,7 @@ $_['help_cut_names']		    = 'Customer names that are displayed in the product pa
 $_['help_require_email']        = 'If enabled, the customer must provide their email address to rate';
 $_['help_enable_coupons']       = 'If activated, then the customer will automatically receive an email with a discount code for his next order when the review is approved.';
 $_['help_coupons_mailtext']     = 'Text to be sent to the customer after generating the coupons. The extension always selects the default language from admin panel for the email.';
+$_['help_coupons_coupon']       = 'The coupon which will be sent to the customer when the review becomes published.';
 
 // Tabs
 $_['tab_general']   = 'General';
@@ -31,4 +33,6 @@ $_['tab_coupons']   = 'Coupons';
 // Error
 $_['error_permission']		            = 'No permissions to edit';
 $_['error_coupons_email_required']      = '"E-Mail required" must be enabled if you want to use coupons.';
+$_['error_coupons_no_coupon']           = 'Please provide a valid coupon code';
+$_['error_coupons_coupon_invalid']      = 'The provided coupon code does not exist.';
 $_['error_coupons_mailtext']            = 'Please enter a mailtext for every available language.';
