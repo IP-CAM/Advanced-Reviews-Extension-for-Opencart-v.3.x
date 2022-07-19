@@ -6,6 +6,7 @@ class ModelExtensionModuleAdvancedReviews extends Model {
             `verified` tinyint(4) NOT NULL DEFAULT 0,
             `image` varchar(255),
             `email` varchar(96),
+            `coupon_sent` tinyint(4) NOT NULL DEFAULT 0,
             PRIMARY KEY(`review_id`)
         );";
 
