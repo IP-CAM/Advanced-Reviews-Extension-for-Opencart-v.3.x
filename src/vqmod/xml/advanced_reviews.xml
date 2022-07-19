@@ -67,7 +67,7 @@
 // Auto send E-Mail for Coupons
 $advanced_review_info = $this->model_extension_module_advanced_reviews->getAdvancedReview($this->request->get['review_id']);
 
-if($this->config->get('module_advanced_reviews_enable_coupons') && !empty($advanced_review_info) && !empty($advanced_review_info['email'])) {
+if($this->config->get('module_advanced_reviews_enable_coupons') && !empty($advanced_review_info) && !empty($advanced_review_info['email']) && $this->request->post['status']) {
 
     // Check if the customer has already received the coupon in the past
     if($this->model_extension_module_advanced_reviews->totalCouponsReceived($advanced_review_info['email']) == 0) {
