@@ -52,10 +52,23 @@
                 } else {
                     $data['error_email'] = '';
                 }
+
+                // Auto send E-Mail for Coupons
+                if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+                    if($this->config->get('module_advanced_reviews_enable_coupons') && !empty($advanced_review_info) && !empty($advanced_review_info['email'])) {
+
+                      
+                            // Set variables
+                            // Send E-Mail to customer
+                        }
+                    }
+                }
             endif;
             /* advanced_reviews.xml END */
             ]]></add>
         </operation>
+
+      
     </file>
 
     <file path='admin/view/template/catalog/review_form.twig'>

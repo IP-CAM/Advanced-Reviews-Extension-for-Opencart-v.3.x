@@ -89,25 +89,6 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$data['module_advanced_reviews_enable_coupons'] = $this->config->get('module_advanced_reviews_enable_coupons');
 		}
 
-		if (isset($this->request->post['module_advanced_reviews_coupons_type'])) {
-			$data['module_advanced_reviews_coupons_type'] = $this->request->post['module_advanced_reviews_coupons_type'];
-		} else {
-			$data['module_advanced_reviews_coupons_type'] = $this->config->get('module_advanced_reviews_coupons_type');
-		}
-
-		if (isset($this->request->post['module_advanced_reviews_coupons_discount'])) {
-			$data['module_advanced_reviews_coupons_discount'] = $this->request->post['module_advanced_reviews_coupons_discount'];
-		} else {
-			$data['module_advanced_reviews_coupons_discount'] = $this->config->get('module_advanced_reviews_coupons_discount');
-		}
-
-		if(empty($data['module_advanced_reviews_coupons_discount'])):
-			$data['module_advanced_reviews_coupons_discount'] = 0;
-		endif;
-		
-		
-		
-
 		// Load Mailtext
 		$mailtexts = $this->model_extension_module_advanced_reviews->getMailtexts();
 
@@ -147,9 +128,6 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 				$this->error['warning'] = $this->language->get('error_coupons_email_required');
 			}
 
-			if($this->request->post['module_advanced_reviews_coupons_discount'] <= 0) {
-				$this->error['warning'] = $this->language->get('error_coupons_discount');	
-			}
 
 			foreach ($this->request->post['module_advanced_reviews_coupons_mailtext'] as $key => $value) {
 				
