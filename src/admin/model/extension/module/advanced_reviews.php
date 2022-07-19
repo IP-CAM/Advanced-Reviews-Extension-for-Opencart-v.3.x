@@ -73,18 +73,8 @@ class ModelExtensionModuleAdvancedReviews extends Model {
     }
 
     public function getMailtext($language_id) {
-        $mailtexts = array();
-
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "advanced_reviews_mailtext WHERE `language_id` = '" . (int)$language_id . "'");
-
-		foreach ($query->rows as $result) {
-			$mailtexts[$result['language_id']] = array(
-				'mailtext'      => $result['mailtext'],
-                'subject'       => $result['subject']
-			);
-		}
-
-		return $mailtexts;
+		return $query->row;
     }
 
     public function setCouponSent($review_id) {
