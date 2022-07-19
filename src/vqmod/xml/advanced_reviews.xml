@@ -13,11 +13,12 @@
 
             $data['advanced_reviews_status'] = $this->config->get('module_advanced_reviews_status');
             $data['advanced_reviews_require_email'] = $this->config->get('module_advanced_reviews_require_email');
+            $this->load->model('extension/module/advanced_reviews');
 
             if($data['advanced_reviews_status']):
 
                 $this->load->language('extension/module/advanced_reviews_form');
-                $this->load->model('extension/module/advanced_reviews');
+               
 
                 $advanced_review_info = $this->model_extension_module_advanced_reviews->getAdvancedReview($this->request->get['review_id']);
 
