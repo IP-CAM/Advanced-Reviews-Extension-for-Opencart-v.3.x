@@ -5,6 +5,8 @@ $_['heading_title']			= 'Advanced Reviews';
 $_['text_extension']		= 'Extensions';
 $_['text_success']			= 'Record successfully edited';
 $_['text_edit']				= 'Edit';
+$_['text_percent']			= 'Percentage';
+$_['text_fix']				= 'Fixed Amount';
 
 // Entry
 $_['entry_status']			    = 'Status';
@@ -12,7 +14,7 @@ $_['entry_terms']			    = 'Conditions reviews';
 $_['entry_verified_faq']	    = 'Verifying information';
 $_['entry_cut_names']           = 'Cut off names';
 $_['entry_require_email']       = 'E-mail required';
-$_['entry_enable_coupons']      = 'Activate Vouchers';
+$_['entry_enable_coupons']      = 'Activate coupons';
 $_['entry_coupons_type']        = 'Type';
 $_['entry_coupons_discount']    = 'Discount';
 $_['entry_coupons_mailtext']    = 'Mailtext';
@@ -25,12 +27,12 @@ $_['help_cut_names']		    = 'Customer names that are displayed in the product pa
 $_['help_require_email']        = 'If enabled, the customer must provide their email address to rate';
 $_['help_enable_coupons']       = 'If activated, then the customer will automatically receive an email with a discount code for his next order when the review is approved.';
 $_['help_coupons_type']         = 'Percent or fixed amount. Calculated in each case on the gross amount';
-$_['help_coupons_mailtext']     = 'Text to be sent to the customer after generating the voucher.';
+$_['help_coupons_mailtext']     = 'Text to be sent to the customer after generating the coupons.';
 
 // Tabs
 $_['tab_general']   = 'General';
-$_['tab_coupons']   = 'Vouchers';
+$_['tab_coupons']   = 'Coupons';
 
 // Error
 $_['error_permission']		= 'No permissions to edit';
-$_['error_coupons_disount'] = 'You must specify a discount if you want to use vouchers.';
+$_['error_coupons_disount'] = 'You must specify a discount if you want to use coupons.';

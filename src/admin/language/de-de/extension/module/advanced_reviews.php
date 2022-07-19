@@ -5,6 +5,8 @@ $_['heading_title']			= 'Advanced Reviews';
 $_['text_extension']		= 'Erweiterungen';
 $_['text_success']			= 'Datensatz erfolgreich bearbeitet';
 $_['text_edit']				= 'Bearbeiten';
+$_['text_percent']			= 'Prozentsatz';
+$_['text_fix']				= 'Fixer Betrag';
 
 // Entry
 $_['entry_status']			    = 'Status';

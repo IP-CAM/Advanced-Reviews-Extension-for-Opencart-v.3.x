@@ -113,6 +113,37 @@
 
           <div id="tab-coupons" class="tab-pane fade">
             
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-enable-coupons"><span data-toggle="tooltip" title="{{ help_enable_coupons }}">{{ entry_enable_coupons }}</span></label>
+              <div class="col-sm-10">
+                <select name="module_advanced_reviews_enable_coupons" id="input-enable-coupons" class="form-control">
+                  {% if module_advanced_reviews_enable_coupons %}
+                  <option value="1" selected="selected">{{ text_yes }}</option>
+                  <option value="0">{{ text_no }}</option>
+                  {% else %}
+                  <option value="1">{{ text_yes }}</option>
+                  <option value="0" selected="selected">{{ text_no }}</option>
+                  {% endif %}
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-coupons-type"><span data-toggle="tooltip" title="{{ help_coupons_type }}">{{ entry_coupons_type }}</span></label>
+              <div class="col-sm-10">
+                <select name="module_advanced_reviews_coupons_type" id="input-coupons-type" class="form-control">
+                  {% if module_advanced_reviews_coupons_type == 'P' %}
+                  <option value="P" selected="selected">{{ text_percent }}</option>
+                  <option value="F">{{ text_fix }}</option>
+                  {% else %}
+                  <option value="P">{{ text_percent }}</option>
+                  <option value="F" selected="selected">{{ text_fix }}</option>
+                  {% endif %}
+                </select>
+              </div>
+            </div>
+
+
           </div>
 
         </div>
