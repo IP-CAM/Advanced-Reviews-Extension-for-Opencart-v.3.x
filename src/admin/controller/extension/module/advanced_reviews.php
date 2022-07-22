@@ -95,6 +95,16 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 			$data['module_advanced_reviews_coupons_coupon'] = $this->config->get('module_advanced_reviews_coupons_coupon');
 		}
 
+		if (isset($this->request->post['module_advanced_reviews_coupons_days_valid'])) {
+			$data['module_advanced_reviews_coupons_days_valid'] = $this->request->post['module_advanced_reviews_coupons_days_valid'];
+		} else {
+			$data['module_advanced_reviews_coupons_days_valid'] = $this->config->get('module_advanced_reviews_coupons_days_valid');
+		}
+
+		if(!is_numeric($data['module_advanced_reviews_coupons_days_valid'])) {
+			$data['module_advanced_reviews_coupons_days_valid'] = 14;
+		}
+
 		
 		if (isset($this->request->post['module_advanced_reviews_coupons_mail'])) {
 			$data['module_advanced_reviews_coupons_mail'] = $this->request->post['module_advanced_reviews_coupons_mail'];
