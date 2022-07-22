@@ -101,6 +101,8 @@ if($this->config->get('module_advanced_reviews_status')):
 
                 $text = $mailtext['mailtext'];
                 $text = str_replace("{{ CODE }}", $this->config->get('module_advanced_reviews_coupons_coupon'), $text);
+                $text = str_replace("{{ VALID_UNTIL }}", $coupon_data['date_end'], $text);
+                
                 $mail->setTo($advanced_review_info['email']);
                 $mail->setSubject($mailtext['subject']);
                 $mail->setHtml(htmlspecialchars_decode($text));
