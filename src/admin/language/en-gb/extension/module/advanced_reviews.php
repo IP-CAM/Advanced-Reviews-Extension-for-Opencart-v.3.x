@@ -18,7 +18,7 @@ $_['entry_enable_coupons']          = 'Activate coupons';
 $_['entry_coupons_mail_subject']    = 'Subject';
 $_['entry_coupons_mail_text']       = 'Mailtext';
 $_['entry_coupons_coupon']          = 'Template Coupon';
-
+$_['entry_coupons_days_valid']      = 'Days valid';
 
 // Help
 $_['help_terms']		        = 'Must be agreed by the customer when submitting a rating';
@@ -29,6 +29,7 @@ $_['help_enable_coupons']       = 'If activated, then the customer will automati
 $_['help_coupons_mail_subject'] = 'Subject of the email with the coupon code sent to the customer.';
 $_['help_coupons_mail_text']    = 'Text to be sent to the customer after generating the coupons. The extension always selects the default language from admin panel for the email.';
 $_['help_coupons_coupon']       = 'The coupon will be copied and sent to the customer when the review becomes published.';
+$_['help_coupons_days_valid']   = 'The period of the generated voucher\'s validity in days.';
 
 // Tabs
 $_['tab_general']   = 'General';

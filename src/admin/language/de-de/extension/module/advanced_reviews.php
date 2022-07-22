@@ -17,6 +17,8 @@ $_['entry_enable_coupons']          = 'Gutscheine aktivieren';
 $_['entry_coupons_mail_subject']    = 'Betreff';
 $_['entry_coupons_mail_text']       = 'Mailtext';
 $_['entry_coupons_coupon']          = 'Vorlage für Gutscheincode';
+$_['entry_coupons_days_valid']      = 'Tage gültig';
+
 
 
 // Help
@@ -28,6 +30,7 @@ $_['help_enable_coupons']       = 'Wenn aktiviert, dann erhält der Kunde bei Fr
 $_['help_coupons_mail_subject'] = 'Betreff der E-Mail mit dem Gutscheincode, die an den Kunden geschickt wird.';
 $_['help_coupons_mail_text']    = 'Text der nach der Generierung des Coupons an den Kunden gesendet werden soll.  Die Erweiterung wählt immer die Standardsprache aus dem Admin-Panel für die E-Mail aus.';
 $_['help_coupons_coupon']       = 'Der Gutschein wird kopiert und per E-Mail an den Kunden geschickt.';
+$_['help_coupons_days_valid']   = 'Die Gültigkeit der generierten Gutscheine in Tagen.';
 
 // Tabs
 $_['tab_general']   = 'Allgemein';
