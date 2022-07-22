@@ -5,7 +5,7 @@ $_['heading_title']			= 'Advanced Reviews';
 $_['text_extension']		            = 'Erweiterungen';
 $_['text_success']			            = 'Datensatz erfolgreich bearbeitet';
 $_['text_edit']				            = 'Bearbeiten';
-$_['text_coupons_mail_placeholders']	= '<kbd>{{ CODE }}</kbd> wird ersetzt durch den Gutscheincode';
+$_['text_coupons_mail_placeholders']	= '<kbd>{{ CODE }}</kbd> wird ersetzt durch den Gutscheincode. <kbd>{{ VALID_UNTIL }}</kbd> wird ersetzt durch das Gültigkeitsdatum des neuen Gutscheines';
 
 // Entry
 $_['entry_status']			        = 'Status';

@@ -5,7 +5,7 @@ $_['heading_title']			= 'Advanced Reviews';
 $_['text_extension']		             = 'Extensions';
 $_['text_success']			             = 'Record successfully edited';
 $_['text_edit']				             = 'Edit';
-$_['text_coupons_mail_placeholders']	 = '<kbd>{{ CODE }}</kbd> will be replaced with the coupon code';
+$_['text_coupons_mail_placeholders']	 = '<kbd>{{ CODE }}</kbd> will be replaced with the coupon code. <kbd>{{ VALID_UNTIL }}</kbd> is replaced by the validity date of the new voucher.';
 
 
 // Entry
