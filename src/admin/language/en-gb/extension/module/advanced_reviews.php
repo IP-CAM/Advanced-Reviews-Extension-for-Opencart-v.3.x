@@ -17,7 +17,7 @@ $_['entry_require_email']           = 'E-mail required';
 $_['entry_enable_coupons']          = 'Activate coupons';
 $_['entry_coupons_mail_subject']    = 'Subject';
 $_['entry_coupons_mail_text']       = 'Mailtext';
-$_['entry_coupons_coupon']          = 'Coupon code';
+$_['entry_coupons_coupon']          = 'Template Coupon';
 
 
 // Help
@@ -28,7 +28,7 @@ $_['help_require_email']        = 'If enabled, the customer must provide their e
 $_['help_enable_coupons']       = 'If activated, then the customer will automatically receive an email with a discount code for his next order when the review is approved.';
 $_['help_coupons_mail_subject'] = 'Subject of the email with the coupon code sent to the customer.';
 $_['help_coupons_mail_text']    = 'Text to be sent to the customer after generating the coupons. The extension always selects the default language from admin panel for the email.';
-$_['help_coupons_coupon']       = 'The coupon which will be sent to the customer when the review becomes published.';
+$_['help_coupons_coupon']       = 'The coupon will be copied and sent to the customer when the review becomes published.';
 
 // Tabs
 $_['tab_general']   = 'General';
