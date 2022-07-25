@@ -73,7 +73,7 @@ if($this->config->get('module_advanced_reviews_status')):
 
         $this->load->language('extension/module/advanced_reviews_form');
         // Check if the customer has already received the coupon in the past
-        if($this->model_extension_module_advanced_reviews->totalCouponsReceived($advanced_review_info['email']) == 0) {
+        if($advanced_review_info['coupon_sent'] == 0) {
             // Verify coupon
             $this->load->model('marketing/coupon');
             $coupon_data = $this->model_marketing_coupon->getCouponByCode($this->config->get('module_advanced_reviews_coupons_coupon'));
