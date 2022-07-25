@@ -90,7 +90,7 @@ if($this->config->get('module_advanced_reviews_status')):
             
             $mailtext = $this->model_extension_module_advanced_reviews->getMailtext($this->config->get('config_language_id'));
 
-            if(!$coupon_data || $coupon_data['status'] == 0 || DateTime::createFromFormat("Y-m-d", $coupon_data['date_end']) < new DateTime()) {
+            if(!$coupon_data) {
                 // Send E-Mail to shop admin so that he can fix the coupon
                 $mail->setTo($this->config->get('config_email'));
                 $mail->setSubject($this->language->get('email_invalid_coupon_subject'));
@@ -99,8 +99,19 @@ if($this->config->get('module_advanced_reviews_status')):
 
             } else if($mailtext) {
 
+                // Generate new Coupon
+
+                $coupon_code = $this->model_extension_module_advanced_reviews->generateCoupon();
+
+                $valid_until = date('Y-m-d');
+                $valid_until = strtotime($valid_until . ' + ' . $this->config->get('module_advanced_reviews_coupons_days_valid') . ' days');
+                
+
+                $coupon_data['code'] = $coupon_code;
+                $coupon_data['date_end'] = $valid_until;
+
                 $text = $mailtext['mailtext'];
-                $text = str_replace("{{ CODE }}", $this->config->get('module_advanced_reviews_coupons_coupon'), $text);
+                $text = str_replace("{{ CODE }}", $coupon_data['code'], $text);
                 $text = str_replace("{{ VALID_UNTIL }}", $coupon_data['date_end'], $text);
                 
                 $mail->setTo($advanced_review_info['email']);

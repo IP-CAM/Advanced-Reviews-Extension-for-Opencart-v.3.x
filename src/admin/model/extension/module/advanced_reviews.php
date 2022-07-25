@@ -85,4 +85,19 @@ class ModelExtensionModuleAdvancedReviews extends Model {
         $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "advanced_reviews` WHERE `email` = '" . $this->db->escape($email) . "' AND `coupon_sent` = 1");
 		return $query->row['total'];
     }
+
+    public function addNewCoupon($data) {
+        $this->load->model('marketing/coupon');
+        $this->model_marketing_coupon->addCoupon($data);
+    }
+
+    public function generateCoupon($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 };
