@@ -101,6 +101,9 @@ if($this->config->get('module_advanced_reviews_status')):
 
                 // Generate new Coupon
 
+                $coupon_data['coupon_product'] = $this->model_marketing_coupon->getCouponProducts($coupon_data['coupon_id']);
+                $coupon_data['coupon_category'] = $this->model_marketing_coupon->getCouponCategories($coupon_data['coupon_id']);
+
                 $coupon_code = $this->model_extension_module_advanced_reviews->generateCoupon();
 
                 $valid_until = date('Y-m-d');
