@@ -26,6 +26,8 @@ class ControllerExtensionModuleAdvancedReviews extends Controller {
 		$data['advanced_reviews_cut_names'] 	= $this->config->get('module_advanced_reviews_cut_names');
 		$data['advanced_reviews_terms'] 		= $this->config->get('module_advanced_reviews_terms');
 		$data['advanced_reviews_verified_faq'] 	= $this->config->get('module_advanced_reviews_verified_faq');
+
+		$data['text_login'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', '', true), $this->url->link('account/register', '', true));
 		
 		$this->load->model('catalog/information');
 
