@@ -109,6 +109,7 @@ if($this->config->get('module_advanced_reviews_status')):
 
                 $coupon_data['code'] = $coupon_code;
                 $coupon_data['date_end'] = $valid_until;
+                $coupon_data['status'] = 1;
 
                 $valid_until = new DateTime($coupon_data['date_end']);
 
