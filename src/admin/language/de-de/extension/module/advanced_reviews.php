@@ -29,7 +29,7 @@ $_['help_require_email']        = 'Wenn aktiviert, muss der Kunde zum Bewerten s
 $_['help_enable_coupons']       = 'Wenn aktiviert, dann erhält der Kunde bei Freischaltung der Bewertung automatisch eine E-Mail mit einem Rabattcode für seine nächste Bestellung.';
 $_['help_coupons_mail_subject'] = 'Betreff der E-Mail mit dem Gutscheincode, die an den Kunden geschickt wird.';
 $_['help_coupons_mail_text']    = 'Text der nach der Generierung des Coupons an den Kunden gesendet werden soll.  Die Erweiterung wählt immer die Standardsprache aus dem Admin-Panel für die E-Mail aus.';
-$_['help_coupons_coupon']       = 'Der Gutschein wird kopiert und per E-Mail an den Kunden geschickt.';
+$_['help_coupons_coupon']       = 'Die Daten des Vorlagegutscheins werden kopiert und mit einer neuen Gültigkeit versehen. Der Code wird anschließend per E-Mail an den Kunden geschickt.';
 $_['help_coupons_days_valid']   = 'Die Gültigkeit der generierten Gutscheine in Tagen.';
 
 // Tabs
