@@ -104,17 +104,19 @@ if($this->config->get('module_advanced_reviews_status')):
                 $coupon_code = $this->model_extension_module_advanced_reviews->generateCoupon();
 
                 $valid_until = date('Y-m-d');
-                $valid_until = strtotime($valid_until . ' + ' . $this->config->get('module_advanced_reviews_coupons_days_valid') . ' days');
+                $valid_until = date('Y-m-d', strtotime($valid_until . ' + ' . $this->config->get('module_advanced_reviews_coupons_days_valid') . ' days'));
                 
 
                 $coupon_data['code'] = $coupon_code;
                 $coupon_data['date_end'] = $valid_until;
 
+                $valid_until = new DateTime($coupon_data['date_end']);
+
                 $this->model_extension_module_advanced_reviews->addNewCoupon($coupon_data);
 
                 $text = $mailtext['mailtext'];
                 $text = str_replace("{{ CODE }}", $coupon_data['code'], $text);
-                $text = str_replace("{{ VALID_UNTIL }}", $coupon_data['date_end'], $text);
+                $text = str_replace("{{ VALID_UNTIL }}", date_format($valid_until, $this->language->get('date_format_short')), $text);
                 
                 $mail->setTo($advanced_review_info['email']);
                 $mail->setSubject($mailtext['subject']);
